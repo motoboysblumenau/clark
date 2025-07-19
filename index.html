@@ -5,26 +5,45 @@
   <title>Pra Você ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap" rel="stylesheet">
   <style>
+    /* Fundo estrelado animado */
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+      background: #0b0c1a;
       font-family: 'Roboto', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      color: #8b0000;
+      color: #f8f8f8;
       text-align: center;
       padding: 20px;
       box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent url('https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/demo/img/bg-stars.png') repeat;
+      z-index: -2;
+      animation: twinkle 60s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes twinkle {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
 
     h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 3em;
       margin: 20px;
+      color: #ffb6c1;
     }
 
     p {
@@ -39,13 +58,14 @@
 
     .typewriter {
       font-size: 1.2em;
-      border-right: 2px solid #8b0000;
+      border-right: 2px solid #ffb6c1;
       white-space: pre-wrap;
       overflow: hidden;
       width: 80%;
       max-width: 800px;
       margin: 30px auto;
       animation: typing 12s steps(120, end), blink 0.7s step-end infinite;
+      color: #ffffff;
     }
 
     @keyframes typing {
@@ -81,6 +101,21 @@
       margin-top: 20px;
       opacity: 0;
       transition: opacity 1s ease;
+    }
+
+    .contador {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #ffb6c1;
+    }
+
+    .final-message {
+      margin-top: 60px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8em;
+      color: #ffc0cb;
+      max-width: 700px;
+      padding: 0 20px;
     }
 
     .hearts {
@@ -141,7 +176,7 @@
   </style>
 </head>
 <body>
-  <h1>Oi... Pamela ❤️</h1>
+  <h1>Oi... ❤️</h1>
   <p>Essa página é pra você, mesmo que nunca veja.</p>
 
   <div class="video-container">
@@ -156,7 +191,7 @@
   </div>
 
   <div class="music-section">
-    <h2 style="font-family: 'Dancing Script', cursive; font-size: 2em;">músicas que me lembram de você 🎵</h2>
+    <h2 style="font-family: 'Dancing Script', cursive; font-size: 2em; color: #ffc0cb;">músicas que me lembram de você 🎵</h2>
 
     <button class="show-button" onclick="mostrarPlaylist()">Ouvir Playlist</button>
 
@@ -168,6 +203,14 @@
         loading="lazy">
       </iframe>
     </div>
+
+    <div class="contador">
+      Vezes que pensei em você neste mês: <strong id="contador">53</strong>
+    </div>
+  </div>
+
+  <div class="final-message">
+    Vou te esperar o tempo que for necessário, nem que seja em outra vida, mas eu quero viver do seu lado para sempre!
   </div>
 
   <div class="hearts">
