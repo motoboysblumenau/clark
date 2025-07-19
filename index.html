@@ -3,33 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Pra Você ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to top left, #ffe4e1, #fff0f5);
-      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+      font-family: 'Roboto', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       color: #8b0000;
       text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
+
     h1 {
+      font-family: 'Dancing Script', cursive;
       font-size: 3em;
       margin: 20px;
     }
+
     p {
-      font-size: 1.5em;
+      font-size: 1.3em;
       margin: 10px 20px;
-      max-width: 600px;
+      max-width: 800px;
     }
+
     .video-container {
-      margin-top: 30px;
+      margin: 30px 0;
     }
+
+    .typewriter {
+      font-size: 1.2em;
+      border-right: 2px solid #8b0000;
+      white-space: pre-wrap;
+      overflow: hidden;
+      width: 80%;
+      max-width: 800px;
+      margin: 30px auto;
+      animation: typing 12s steps(120, end), blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .music-section {
+      margin-top: 40px;
+    }
+
     .hearts {
       position: fixed;
       top: 0;
@@ -40,6 +71,7 @@
       overflow: hidden;
       z-index: -1;
     }
+
     .heart {
       position: absolute;
       width: 20px;
@@ -48,6 +80,7 @@
       transform: rotate(45deg);
       animation: float 5s infinite;
     }
+
     .heart::before,
     .heart::after {
       content: "";
@@ -57,10 +90,12 @@
       background: pink;
       border-radius: 50%;
     }
+
     .heart::before {
       top: -10px;
       left: 0;
     }
+
     .heart::after {
       left: -10px;
       top: 0;
@@ -76,25 +111,42 @@
         opacity: 0;
       }
     }
+
+    iframe {
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
   <h1>Oi... ❤️</h1>
-  <p>
-    Talvez você nunca veja isso, mas eu ainda penso em você.
-    <br>Queria que soubesse que deixou um espaço bonito no meu coração.
-  </p>
+  <p>Essa página é pra você, mesmo que nunca veja.</p>
 
   <div class="video-container">
-    <!-- Substitua 'meu_video.mp4' pelo nome do seu vídeo -->
-    <video width="300" controls>
+    <video width="320" controls>
       <source src="meu_video.mp4" type="video/mp4">
       Seu navegador não suporta vídeo :(
     </video>
   </div>
 
+  <div class="typewriter" id="typewriter-text">
+    <!-- Texto digitando será inserido por JS -->
+  </div>
+
+  <div class="music-section">
+    <h2 style="font-family: 'Dancing Script', cursive; font-size: 2em;">músicas que me lembram de você 🎵</h2>
+    
+    <!-- Substitua o link abaixo pelo link da sua playlist do Spotify -->
+    <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/playlist/SEU_CODIGO_AQUI?utm_source=generator" 
+      width="300" height="380" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
+  </div>
+
   <div class="hearts">
-    <!-- Corações animados -->
     <script>
       function createHeart() {
         const heart = document.createElement('div');
@@ -107,5 +159,27 @@
       setInterval(createHeart, 500);
     </script>
   </div>
+
+  <script>
+    const text = `Oi, saiba que eu nunca te esqueci e acho que nunca deixei de te amar!
+Mesmo essa distância apertando meu peito todo dia e eu acordando sem um propósito claro, sei que a culpa foi minha e te peço sinceras desculpas!
+Só que eu não quero viver esse restinho de vida de mais 70, 60 anos longe da pessoa que eu mais amei nessa minha vida!
+Eu vou te esperar o tempo que for necessário.
+Sabe porque você é tão importante para mim?
+Você me contagia. Simplesmente o fato de você cuidar de mim me faz me sentir a pessoa mais amada e feliz do planeta!
+Obrigado por todo o tempo que tive com você e sinceramente, se pudesse escolher qualquer coisa do mundo hoje, escolheria seus braços e seus beijos!
+Eu te amo para caralho! ❤️`;
+
+    const target = document.getElementById('typewriter-text');
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        target.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 40);
+      }
+    }
+    window.onload = type;
+  </script>
 </body>
 </html>
