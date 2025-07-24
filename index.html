@@ -5,7 +5,6 @@
   <title>Pra Você ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    /* Fundo estrelado animado */
     body {
       margin: 0;
       padding: 0;
@@ -118,6 +117,75 @@
       padding: 0 20px;
     }
 
+    .memory-box-section {
+      margin-top: 60px;
+      text-align: center;
+      color: #ffc0cb;
+    }
+
+    .memory-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    .memory-click-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .memory-click-area:hover {
+      transform: scale(1.05);
+    }
+
+    .arrow {
+      font-size: 1em;
+      margin-bottom: 8px;
+      color: #fff;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(5px); opacity: 0.7; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .caixa-fechada {
+      width: 100px;
+      height: 100px;
+      background: #8b0000;
+      color: white;
+      font-size: 2.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 192, 203, 0.6);
+    }
+
+    .lista-memorias {
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      color: #fff;
+      font-size: 1.2em;
+      animation: fadeIn 1s ease;
+    }
+
+    .lista-memorias li {
+      margin: 6px 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .hearts {
       position: fixed;
       top: 0;
@@ -186,9 +254,7 @@
     </video>
   </div>
 
-  <div class="typewriter" id="typewriter-text">
-    <!-- Texto digitando será inserido por JS -->
-  </div>
+  <div class="typewriter" id="typewriter-text"></div>
 
   <div class="music-section">
     <h2 style="font-family: 'Dancing Script', cursive; font-size: 2em; color: #ffc0cb;">músicas que me lembram de você 🎵</h2>
@@ -211,6 +277,26 @@
 
   <div class="final-message">
     Vou te esperar o tempo que for necessário, nem que seja em outra vida, mas eu quero viver do seu lado para sempre!
+  </div>
+
+  <div class="memory-box-section">
+    <h2 class="memory-title">📦 Caixa de Memórias</h2>
+    <div class="memory-click-area" onclick="abrirCaixa()">
+      <div class="arrow">⬇ Clique na caixa</div>
+      <div class="caixa-fechada" id="caixa">
+        <p>💭</p>
+      </div>
+    </div>
+    <ul class="lista-memorias" id="memorias">
+      <li>Ir para o progresso</li>
+      <li>Assistir filmes românticos</li>
+      <li>Escutar música</li>
+      <li>Sonhar</li>
+      <li>Acordar</li>
+      <li>Respirar</li>
+      <li>Trabalhar na rua</li>
+      <li>Comer cachorro quente</li>
+    </ul>
   </div>
 
   <div class="hearts">
@@ -254,6 +340,11 @@ Eu te amo para caralho! ❤️`;
       btn.style.display = 'none';
       playlist.style.display = 'block';
       setTimeout(() => playlist.style.opacity = '1', 100);
+    }
+
+    function abrirCaixa() {
+      document.getElementById('caixa').style.display = 'none';
+      document.getElementById('memorias').style.display = 'block';
     }
   </script>
 </body>
